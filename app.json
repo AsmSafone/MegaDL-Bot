@@ -1,0 +1,59 @@
+{
+    "name": "MegaDL Bot",
+    "description": "Simple Telegram Bot to download files from Mega.nz",
+    "logo": "https://telegra.ph/file/583f46da57641b90c28f9.png",
+    "keywords": [
+        "megadl",
+        "telegram",
+        "mega.nz bot"
+    ],
+    "website": "https://t.me/safothebot",
+    "repository": "https://github.com/AsmSafone/MegaDL-Bot",
+    "success_url": "https://t.me/AsmSafone",
+    "env": {
+        "API_ID": {
+            "description": "Your API_ID from my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Your API_HASH from my.telegram.org",
+            "required": true
+        },
+        "OWNER_ID": {
+            "description": "Your Telegram ID from @Find_TGIDbot",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token. Get it from @BotFather",
+            "required": true
+        },
+        "LOG_CHANNEL": {
+            "description": "Your Logs/ Status Channel ID. Get it from @Find_TGIDbot",
+            "required": true
+        },
+        "UPDATES_CHANNEL": {
+            "description": "Your Updates Channel ID For ForceSub. Get it from @Find_TGIDbot",
+            "required": false
+        },
+        "LOG_CHANNEL_UNAME": {
+            "description": "Your Bot Logs / Status Channel Username without @",
+            "required": true
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "stack": "heroku-20"
+}
