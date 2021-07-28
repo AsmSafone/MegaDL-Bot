@@ -1,5 +1,5 @@
-# (c) Asm Safone
-# A Part of MegaDL-Bot <https://github.com/AsmSafone/MegaDL-Bot>
+# (c) @doreamonfans1 
+# A Part of MegaDL-Bot <https://github.com/disneyteam77/MegaDL-Bot>
 
 import os
 from pyrogram import Client, filters
