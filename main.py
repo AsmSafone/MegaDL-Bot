@@ -18,4 +18,7 @@ if __name__ == "__main__" :
         plugins=plugins
     )
     app.start()
+    print('\n\n>>> MegaDL-Bot Started. Join @AsmSafone!')
     idle()
+    app.stop()
+    print('\n\n>>> MegaDL-Bot Stopped. Join @AsmSafone!')
