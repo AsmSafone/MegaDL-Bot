@@ -62,7 +62,10 @@ async def megadl(bot, message):
     user = f'[Upload Done](tg://user?id={message.from_user.id})'
     userpath = str(message.from_user.id)
     alreadylol = basedir + "/" + userpath
-    if not os.path.isdir(alreadylol):
+    if os.path.isdir(alreadylol):
+      await message.reply_text(f"**Already One Process is Going On! \nPlease Wait Until It's Finished 😕!**", reply_to_message_id=message.message_id)
+      return
+    else:
       os.makedirs(alreadylol)
     try:
       if 'folder' in url:
