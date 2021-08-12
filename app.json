@@ -28,16 +28,12 @@
             "required": true
         },
         "LOG_CHANNEL": {
-            "description": "Your Logs/ Status Channel ID. Get it from @Find_TGIDbot",
+            "description": "Logs Channel ID for some tracking XD. Get it from @Find_TGIDbot",
             "required": true
         },
         "UPDATES_CHANNEL": {
-            "description": "Your Updates Channel ID For ForceSub. Get it from @Find_TGIDbot",
+            "description": "Updates Channel ID For ForceSub Asap. Get it from @Find_TGIDbot",
             "required": false
-        },
-        "LOG_CHANNEL_UNAME": {
-            "description": "Your Bot Logs / Status Channel Username without @",
-            "required": true
         }
     },
     "addons": [],

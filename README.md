@@ -9,6 +9,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/AsmSafone/MegaDL-Bot?color=red)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AsmSafone/MegaDL-Bot)
 ![GitHub](https://img.shields.io/github/license/AsmSafone/MegaDL-Bot)
+[![Bot Updates](https://img.shields.io/badge/MegaDL-Bot%20Updates-blue)](https://t.me/AsmSafone)
 [![Bot Support](https://img.shields.io/badge/MegaDL-Bot%20Support%20Group-blue)](https://t.me/safothebot)
 
 A Simple Telegram Bot By @AsmSafone to Download Files From Mega.nz and Upload It to Telegram
@@ -16,7 +17,7 @@ A Simple Telegram Bot By @AsmSafone to Download Files From Mega.nz and Upload It
 # Features
 - No Login Required
 - All Mega.nz File Links Supported
-- Show Live Status On Bot Logs Channel
+- Track User Activity On Bot Logs Channel
 - Can Force Users To Subscribe To Updates Channel
 - Auto Detect File Type Before Upload to Telegram
 - Can Add Caption To Any Telegram Media Files
@@ -72,8 +73,3 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 # Support 
 <a href="https://t.me/safothebot"><img src="https://img.shields.io/badge/Support_Group-2cb6e0?style=for-the-badge&logo=telegram&logoColor=white"></a> <a href="https://t.me/AsmSafone"><img src="https://img.shields.io/badge/Updates_Channel-2cb6e0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 
-# Credits
-- Dan [For Pyrogram]
-- Asm Safone [For This Project] 
-- O'Dwyer Software [For Mega.py]
-- Itz Fork [For Detect File Type Func]

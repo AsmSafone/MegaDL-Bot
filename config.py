@@ -13,7 +13,6 @@ class Config:
     OWNER_ID = int(os.environ.get("OWNER_ID", 1316963576))
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL"))
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
-    LOG_CHANNEL_UNAME = os.environ.get("LOG_CHANNEL_UNAME", "")
 
 
 class TEXT:
@@ -26,7 +25,7 @@ class TEXT:
 
 📡 **Hosted On:** [Heroku](https://heroku.com)
 
-🧑‍💻 **Maintainer:** {bot_owner}
+🧑‍💻 **Developer:** [Safone](https://t.me/ImSafone)
 
 👥 **Support Group:** [SafoTheBot](https://t.me/safothebot)
 

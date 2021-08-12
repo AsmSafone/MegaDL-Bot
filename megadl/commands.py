@@ -4,6 +4,7 @@
 import os
 import math
 import time
+import shutil
 import asyncio
 import logging
 from pyrogram import Client, filters
@@ -24,11 +25,9 @@ async def help(bot, message, cb=False):
         InlineKeyboardButton(f'🏠 HOME', callback_data='back'),
         InlineKeyboardButton(f'ABOUT 👨', callback_data='about')
         ],[
-        InlineKeyboardButton(f'⌛️ STATUS', url=f'https://t.me/{Config.LOG_CHANNEL_UNAME}'),
+        InlineKeyboardButton(f'📦 SOURCE', url='https://github.com/AsmSafone/MegaDL-Bot'),
         InlineKeyboardButton(f'CLOSE 🔐', callback_data='close')
-        ],[
-        InlineKeyboardButton(f'📦 SOURCE CODE 📦', url='https://github.com/AsmSafone/MegaDL-Bot')
-    ]]
+        ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
@@ -56,10 +55,11 @@ async def start(bot, message, cb=False):
     owner_username = owner.username if owner.username else 'AsmSafone'
     button = [[
         InlineKeyboardButton(f'💡 HELP', callback_data='help'),
-        InlineKeyboardButton(f'ABOUT 👨', callback_data="about")],[
-        InlineKeyboardButton(f'⌛️ STATUS', url=f'https://t.me/{Config.LOG_CHANNEL_UNAME}'),
+        InlineKeyboardButton(f'ABOUT 👨', callback_data="about")
+        ],[
+        InlineKeyboardButton(f'📦 SOURCE', url='https://github.com/AsmSafone/MegaDL-Bot'),
         InlineKeyboardButton(f'CLOSE 🔐', callback_data="close")
-    ]]
+        ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
@@ -83,26 +83,23 @@ async def about(bot, message, cb=False):
       if fsub == 400:
         return
     me = await bot.get_me()
-    owner = await bot.get_users(Config.OWNER_ID)
     button = [[
         InlineKeyboardButton(f'🏠 HOME', callback_data='back'),
         InlineKeyboardButton(f'HELP 💡', callback_data='help')
         ],[
-        InlineKeyboardButton(f'⌛️ STATUS', url=f'https://t.me/{Config.LOG_CHANNEL_UNAME}'),
+        InlineKeyboardButton(f'📦 SOURCE', url='https://github.com/AsmSafone/MegaDL-Bot'),
         InlineKeyboardButton(f'CLOSE 🔐', callback_data="close")
-        ],[
-        InlineKeyboardButton(f'📦 SOURCE CODE 📦', url='https://github.com/AsmSafone/MegaDL-Bot')
-    ]]
+        ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=TEXT.ABOUT.format(bot_name=me.mention(style='md'), bot_owner=owner.mention(style="md")),
+            text=TEXT.ABOUT.format(bot_name=me.mention(style='md')),
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=TEXT.ABOUT.format(bot_name=me.mention(style='md'), bot_owner=owner.mention(style="md")),
+            text=TEXT.ABOUT.format(bot_name=me.mention(style='md')),
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
@@ -174,10 +171,22 @@ async def refreshmeh_cb(bot, message):
 
 
 
-@Client.on_callback_query(filters.regex('^cancel$'))
+@Client.on_callback_query(filters.regex('^cancel_mega$'))
 async def cancel_cb(bot, message):
-    await message.answer(
-                "Can't Cancel Right Now! 😡",
+    basedir = Config.DOWNLOAD_LOCATION
+    userpath = str(message.from_user.id)
+    try:
+        await message.answer(
+            "Trying To Cancel... 🤒",
                 show_alert=True
             )
-    await asyncio.sleep(5)
+        await asyncio.sleep(5)
+        shutil.rmtree(basedir + "/" + userpath)
+        await message.message.delete()
+        await message.message.reply_text("**Process Cancelled By User 😡!**", reply_to_message_id=message.message_id)
+    except Exception as e:
+        await print(e)
+        await message.answer(
+            "Can't Cancel Right Now! 😡",
+                show_alert=True
+            )
