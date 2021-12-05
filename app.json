@@ -7,7 +7,7 @@
         "telegram",
         "mega.nz bot"
     ],
-    "website": "https://t.me/safothebot",
+    "website": "https://www.safone.tech",
     "repository": "https://github.com/AsmSafone/MegaDL-Bot",
     "success_url": "https://t.me/AsmSafone",
     "env": {
@@ -51,5 +51,5 @@
             "size": "free"
         }
     },
-    "stack": "heroku-20"
+    "stack": "container"
 }

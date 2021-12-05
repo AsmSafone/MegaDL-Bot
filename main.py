@@ -3,8 +3,8 @@
 
 import os
 import asyncio
-from pyrogram import Client, idle
 from config import Config
+from pyrogram import Client, idle
 
 if __name__ == "__main__" :
     if not os.path.isdir(Config.DOWNLOAD_LOCATION):

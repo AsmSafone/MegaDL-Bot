@@ -27,7 +27,7 @@ class TEXT:
 
 🧑‍💻 **Developer:** [Safone](https://t.me/ImSafone)
 
-👥 **Support Group:** [SafoTheBot](https://t.me/safothebot)
+👥 **Support Group:** [AsmSupport](https://t.me/AsmSupport)
 
 📢 **Updates Channel:** [Ｓ１ ＢＯＴＳ](https://t.me/AsmSafone)
 """

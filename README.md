@@ -10,7 +10,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AsmSafone/MegaDL-Bot)
 ![GitHub](https://img.shields.io/github/license/AsmSafone/MegaDL-Bot)
 [![Bot Updates](https://img.shields.io/badge/MegaDL-Bot%20Updates-blue)](https://t.me/AsmSafone)
-[![Bot Support](https://img.shields.io/badge/MegaDL-Bot%20Support%20Group-blue)](https://t.me/safothebot)
+[![Bot Support](https://img.shields.io/badge/MegaDL-Bot%20Support%20Group-blue)](https://t.me/AsmSupport)
 
 A Simple Telegram Bot By @AsmSafone to Download Files From Mega.nz and Upload It to Telegram
 
@@ -31,6 +31,8 @@ Deploy Your Own Bot ♥️ **Star 🌟 Fork 🍴 & Deploy**
 
 ### Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Note: `First Fork Then Click On Deploy Button!`
 
 ### Self Host
 
