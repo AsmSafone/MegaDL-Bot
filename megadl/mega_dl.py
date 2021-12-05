@@ -189,7 +189,7 @@ async def cancel_dl(bot, message):
     userpath = str(message.from_user.id)
     try:
         shutil.rmtree(basedir + "/" + userpath)
-        await message.reply_text("✅ **Canceled Successfully!**", reply_to_message_id=message.message_id)
+        await message.reply_text("✅ **Downloading Canceled Successfully!**", reply_to_message_id=message.message_id)
     except Exception as e:
         await print(e)
-        await message.reply_text("❌ **Failed To Cancel!**", reply_to_message_id=message.message_id)
+        await message.reply_text("❌ **No Active Download Process To Cancel!**", reply_to_message_id=message.message_id)
