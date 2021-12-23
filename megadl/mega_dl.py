@@ -3,8 +3,8 @@
 
 import os
 import time
-import logging
 import shutil
+import logging
 import filetype
 import subprocess
 import moviepy.editor
@@ -46,7 +46,6 @@ def DownloadMegaLink(url, alreadylol, download_msg):
     try:
         m.download_url(url, alreadylol, statusdl_msg=download_msg)
     except Exception as e:
-        #await download_msg.edit(f"**Error:** `{e}`")
         print(e)
 
 
@@ -79,7 +78,7 @@ async def megadl(bot, message):
             logs_msg = await message.forward(Config.LOG_CHANNEL)
             trace_msg = await logs_msg.reply_text(f"#MegaDL: Download Started! \n\n{user_info}")
             download_msg = await message.reply_text(
-                '**Trying To Download ...** \n\nThis Process May Take Some Time 🤷\u200d♂️!',
+                "**Trying To Download ...** \n\nThis Process May Take Some Time 🤷\u200d♂️!",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -96,13 +95,20 @@ async def megadl(bot, message):
             getfiles = [f for f in os.listdir(alreadylol) if isfile(join(alreadylol, f))]
             files = getfiles[0]
             magapylol = f"{alreadylol}/{files}"
-            await download_msg.edit('**Downloaded Successfully 😉!**')
+            await download_msg.edit("**Downloaded Successfully 😉!**")
             await trace_msg.edit(f"#MegaDL: Download Done! \n\n{user_info}")
     except Exception as e:
-        await download_msg.edit(f'**Error:** `{e}`')
-        await trace_msg.edit(
-            f'#MegaDL: Download Failed! \nReason: `{e}` \n\n{user_info}'
-        )
+        if "list index out of range" in str(e):
+            await download_msg.edit("**Please Try Again After 30 Seconds 🤒!**")
+            await trace_msg.edit(
+                f"#MegaDL: Download Canceled! \nReason: `{e}` \n\n{user_info}"
+                )
+            os.system(f"kill -9 {os.getpid()} && python3 main.py")
+        else:
+            await download_msg.edit(f"**Error:** `{e}`")
+            await trace_msg.edit(
+                f"#MegaDL: Download Failed! \nReason: `{e}` \n\n{user_info}"
+                )
         shutil.rmtree(basedir + '/' + userpath)
         return
     lmaocheckdis = os.stat(alreadylol).st_size
@@ -119,7 +125,7 @@ async def megadl(bot, message):
             await download_msg.edit("**Trying To Upload ...** \n**Can't Get File Type, Sending as Document!")
             safone = await message.reply_document(magapylol, progress=progress_for_pyrogram, progress_args=("**Uploading ...** \n", download_msg, start_time), reply_to_message_id=message.message_id)
             await safone.reply_text(
-                '**Join @AsmSafone! \nThanks For Using Me 😘!**',
+                "**Join @AsmSafone! \nThanks For Using Me 😘!**",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -136,29 +142,25 @@ async def megadl(bot, message):
             await trace_msg.edit(f"#MegaDL: Upload Done! \n\n{user_info}")
             shutil.rmtree(basedir + "/" + userpath)
             return
+        # Checking file type
         filemimespotted = guessedfilemime.mime
-        # Checking If it's a gif
+        await download_msg.edit("**Trying To Upload ...**")
         if "image/gif" in filemimespotted:
-            await download_msg.edit("**Trying To Upload ...**")
             safone = await message.reply_animation(magapylol, progress=progress_for_pyrogram, progress_args=("**Uploading ...** \n", download_msg, start_time), reply_to_message_id=message.message_id)
         elif "image" in filemimespotted:
-            await download_msg.edit("**Trying To Upload ...**")
             safone = await message.reply_photo(magapylol, progress=progress_for_pyrogram, progress_args=("**Uploading ...** \n", download_msg, start_time), reply_to_message_id=message.message_id)
         elif "video" in filemimespotted:
-            await download_msg.edit("**Trying To Upload ...**")
             viddura = moviepy.editor.VideoFileClip(f"{magapylol}")
             vidduration = int(viddura.duration)
             thumbnail_path = f"{alreadylol}/thumbnail.jpg"
             subprocess.call(['ffmpeg', '-i', magapylol, '-ss', '00:00:10.000', '-vframes', '1', thumbnail_path])
             safone = await message.reply_video(magapylol, duration=vidduration, thumb=thumbnail_path, progress=progress_for_pyrogram, progress_args=("**Uploading ...** \n", download_msg, start_time), reply_to_message_id=message.message_id)
         elif "audio" in filemimespotted:
-            await download_msg.edit("**Trying To Upload ...**")
             safone = await message.reply_audio(magapylol, progress=progress_for_pyrogram, progress_args=("**Uploading ...** \n", download_msg, start_time), reply_to_message_id=message.message_id)
         else:
-            await download_msg.edit("**Trying To Upload ...**")
             safone = await message.reply_document(magapylol, progress=progress_for_pyrogram, progress_args=("**Uploading ...** \n", download_msg, start_time), reply_to_message_id=message.message_id)
         await safone.reply_text(
-            '**Join @AsmSafone! \nThanks For Using Me 😘!**',
+            "**Join @AsmSafone! \nThanks For Using Me 😘!**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [

@@ -1,7 +1,7 @@
 moviepy
 filetype
-Pyrogram
-TgCrypto
+pyrogram
+tgcrypto
 ffmpeg-python
 hurry.filesize
 git+https://github.com/asmsafone/mega.py.git
